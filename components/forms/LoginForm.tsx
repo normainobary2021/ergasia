@@ -43,7 +43,13 @@ export async function LoginForm() {
                             <GeneralSubmitButton variant="outline" text="Login with Github" icon={<GitHub />} />
                         </form>
 
-                        <form className="flex flex-col gap-4">
+                        <form action={async () => {
+                            "use server";
+
+                            await signIn("google", {
+                                redirectTo: "/",
+                            });
+                        }} className="flex flex-col gap-4">
                             {/* <Button variant="outline">
                                 <Google className="size-4" />
                                 Login with Google
